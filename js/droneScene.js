@@ -99,7 +99,7 @@ function createTextSprite(text, color = 0x00aaff) {
 function createScene() {
   container = document.getElementById("canvas-container") || document.body;
   scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x000000);
+  scene.background = new THREE.Color(0x20232a);
 
   const w = Math.max(300, container.clientWidth || window.innerWidth);
   const h = Math.max(200, container.clientHeight || window.innerHeight);
@@ -175,7 +175,7 @@ function createScene() {
     scene.add(droneGroup);
   } else {
     console.error(
-      "No se encontró buildDrone. Asegúrate de que droneParts.js se cargue antes que droneScene.js"
+      "No se encontró buildDrone. Asegúrate de que buildDrone.js y los archivos en js/parts/ se carguen antes que droneScene.js"
     );
   }
 
