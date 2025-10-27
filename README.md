@@ -1,162 +1,143 @@
-````markdown
-# 🛩️ Storkie DRN — Scroll Experience (Demo Interactiva)
-
-Experiencia web 3D basada en scroll que presenta el dron FPV **Storkie DRN** de forma inmersiva.  
-Desarrollada con **Three.js** (visualización 3D) y **Anime.js** (animaciones sincronizadas).
-
+---
 <p align="center">
-  <img src="https://img.shields.io/badge/status-prototype-blue?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/license-MIT-green?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/tech-Three.js%20%7C%20Anime.js%20%7C%20HTML5%20%7C%20CSS3-yellow?style=for-the-badge" />
+<img src="assets/img/storkie_banner.png" alt="Storkie DRN Header">
 </p>
 
+**Storkie DRN — Scroll Experience** es una experiencia web 3D interactiva que combina **animaciones controladas por scroll** y **visualización en tiempo real**.
+Diseñada para presentar el dron FPV **Storkie DRN** de manera **inmersiva, fluida y visualmente impactante**.
 ---
 
-## 📑 Tabla de contenidos
+## **📌 Objetivo del Proyecto**
 
-1. [Vista general](#-vista-general)
-2. [Tecnologías utilizadas](#-tecnologías-utilizadas)
-3. [Arquitectura del proyecto](#-arquitectura-del-proyecto)
-4. [Flujo de ejecución](#-flujo-de-ejecución)
-5. [Requisitos](#-requisitos)
-6. [Instalación rápida](#-instalación-rápida)
-7. [Futuras mejoras](#-futuras-mejoras)
-8. [Autor](#-autor)
-9. [Licencia](#-licencia)
+Crear una **landing interactiva 3D** donde el usuario pueda **explorar el dron Storkie DRN** a través del desplazamiento de la página.  
+El objetivo es ofrecer una **narrativa visual atractiva** que muestre las características técnicas y el diseño del dron de forma moderna y profesional.
 
 ---
 
-## 🧐 Vista general
+## **📌 Características Principales**
 
-Esta demo combina una escena 3D renderizada en el navegador con animaciones controladas por desplazamiento vertical (_scroll_).  
-Mientras el usuario avanza por la página:
-
-- Un objeto 3D (actualmente una **esfera**) simula el dron FPV.
-- Cada sección activa una animación distinta:
-  - 🔁 Rotación estructural
-  - ⬆️ Elevación
-  - 🔍 Zoom / Escalado
-  - 🎨 Cambio de color
-- Los bloques de texto se sincronizan con los movimientos del dron para crear una narrativa visual fluida.
+🔹 **Visualización 3D en tiempo real** gracias a **Three.js**, con una escena totalmente interactiva.  
+🔹 **Animaciones sincronizadas con el scroll** mediante **Anime.js**, controlando rotaciones, escalas y posiciones.  
+🔹 **Narrativa visual dinámica**, donde cada sección del scroll revela una parte del dron o una característica técnica.  
+🔹 **Diseño modular**, fácilmente integrable con modelos `.glb` o `.gltf` exportados desde Blender o Maya.  
+🔹 **Código ligero**, sin dependencias externas, 100 % optimizado para WebGL.
 
 ---
 
-## 🧠 Tecnologías utilizadas
+## **📌 Tecnologías Utilizadas**
 
 ### 🟦 Three.js
 
-Librería JavaScript para renderizado 3D con WebGL.
+Librería de renderizado 3D basada en WebGL.
 
-- Cámara de perspectiva, luces direccional y ambiental.
-- Placeholder actual: **esfera 3D** (futura sustitución por el modelo real `storkie-drn.glb`).
-- Soporte para materiales PBR, animaciones complejas y efectos visuales.
+- Cámara de perspectiva y sistema de iluminación ambiental.
+- Placeholder actual: **esfera 3D**, que representa el dron durante la fase de prototipo.
+- Preparado para materiales PBR, postprocesado y sombras dinámicas.
 
 ### 🟧 Anime.js
 
-Framework de animación para web.
+Framework de animación en JavaScript.
 
-- Control de propiedades 3D: `rotation`, `position`, `scale`, `color`.
-- Transiciones de interfaz: efectos _fade-in_ y _fade-out_ en texto.
-- Basado en el evento `onScroll`, que sincroniza las animaciones con el desplazamiento del usuario.
+- Control de propiedades del objeto 3D (`rotation`, `position`, `scale`, `color`).
+- Sincronización con desplazamiento (scroll) usando eventos `onScroll`.
+- Transiciones fluidas y naturales para una experiencia cinematográfica.
 
-**Ejemplo:**
+### 🟨 HTML5 + CSS3 + JavaScript
 
-```js
-anime({
-  targets: dronePlaceholder.rotation,
-  y: [0, Math.PI / 2],
-  duration: 1500,
-  easing: "easeInOutSine",
-});
-```
-````
-
-### 🟨 HTML5, CSS3 y JavaScript
-
-- **HTML5:** estructura semántica moderna.
-- **CSS3:** estilo oscuro, responsive y visual limpio.
-- **JavaScript:** gestiona la integración entre Three.js, Anime.js y el evento de scroll.
+- **HTML5**: estructura semántica y adaptable.
+- **CSS3**: estilo oscuro, enfoque en contraste, responsive.
+- **JavaScript nativo**: conexión entre Three.js, Anime.js y el scroll del usuario.
 
 ---
 
-## ⚙️ Arquitectura del proyecto
+## **📌 Arquitectura del Proyecto**
 
-```bash
+```
+
 storkie-drn-onscroll/
-├── index.html              # Punto de entrada principal
+├── index.html              → punto de entrada principal
 ├── css/
-│   └── style.css           # Estilos globales
+│   └── style.css           → estilos globales
 ├── js/
-│   ├── main.js             # Lógica de scroll y activación de animaciones
-│   └── droneScene.js       # Configuración Three.js (escena, luces, objeto)
-└── assets/                 # Recursos futuros (modelos, imágenes, texturas)
+│   ├── main.js             → control de scroll y activación de animaciones
+│   └── droneScene.js       → configuración de escena, luces y objeto 3D
+└── assets/
+├── img/                → imágenes y banners
+└── models/             → modelos 3D futuros (storkie-drn.glb)
+
 ```
 
 ---
 
-## 🔄 Flujo de ejecución
+## **📌 Flujo de Ejecución**
 
-1. `droneScene.js` inicializa la escena 3D con cámara, luces y objeto placeholder.
-2. Se lanza un bucle de renderizado continuo (`requestAnimationFrame`).
-3. `main.js` detecta la posición del scroll del usuario.
-4. Anime.js ejecuta animaciones según la sección activa.
-5. Los textos se sincronizan con el movimiento y la narrativa visual.
-
----
-
-## 🧰 Requisitos
-
-- Navegador moderno con soporte **WebGL** (Chrome, Firefox, Edge, Safari).
-- No requiere backend.
+1️⃣ **Inicialización 3D** — `droneScene.js` crea la escena con cámara, luces y el objeto placeholder.  
+2️⃣ **Render Loop** — mantiene el renderizado en tiempo real (`requestAnimationFrame`).  
+3️⃣ **Detección de scroll** — `main.js` identifica la sección activa del documento.  
+4️⃣ **Sincronización de animaciones** — Anime.js aplica transformaciones al dron según el scroll.  
+5️⃣ **Narrativa visual** — los textos y efectos se coordinan para acompañar cada animación.
 
 ---
 
-## ⚡ Instalación rápida
+## **📌 Requisitos**
+
+✔️ Navegador moderno con soporte **WebGL** (Chrome, Edge, Firefox, Safari).  
+✔️ No requiere backend ni instalación.  
+✔️ Compatible con pantallas Full HD y 4K.
+
+---
+
+## **📌 Instalación Rápida**
 
 ```bash
-# Clona el repositorio
+# Clonar el repositorio
 git clone https://github.com/username/storkie-drn-onscroll.git
 cd storkie-drn-onscroll
 
-# Opción 1: abrir directamente
-# Haz doble clic en index.html
+# Abrir directamente
+open index.html
 
-# Opción 2: usar servidor local
+# O usar un servidor local
 npx serve .
 ```
 
 ---
 
-## 🚀 Futuras mejoras
+## **📌 Futuras Mejoras**
 
-| Etapa                       | Descripción                                                                    |
-| :-------------------------- | :----------------------------------------------------------------------------- |
-| 🔜 Integración modelo real  | Reemplazar la esfera por `storkie-drn.glb` con materiales PBR.                 |
-| 🧩 Desmontaje real          | Animar partes independientes (cámara, brazos, batería) controladas por scroll. |
-| 🎚️ Scroll-timeline continua | Transiciones proporcionales al porcentaje de desplazamiento.                   |
-| 🌫️ Efectos visuales         | Añadir _bloom_, sombras suaves y reflejos HDRI.                                |
-| 🖥️ UI informativa           | Mostrar datos técnicos (velocidad, autonomía, peso) en overlay.                |
+| **Etapa**                         | **Descripción**                                                              |
+| --------------------------------- | ---------------------------------------------------------------------------- |
+| 🔜 **Integración modelo real**    | Reemplazar la esfera por `storkie-drn.glb` con materiales PBR y texturas HD. |
+| 🧩 **Desmontaje real**            | Animar componentes individuales (batería, cámara, brazos).                   |
+| 🎚️ **Scroll-timeline continua**   | Controlar las animaciones mediante porcentaje de desplazamiento.             |
+| 🌫️ **Efectos visuales avanzados** | Bloom, partículas, reflejos HDRI y postprocesado.                            |
+| 🖥️ **Interfaz informativa (HUD)** | Mostrar datos técnicos del dron en tiempo real.                              |
 
 ---
 
-## 👨‍💻 Autor
+## **📌 Autor**
 
-**Pau Díaz**
+👤 **Pau Díaz**
 Desarrollador técnico y diseñador del ecosistema **Storkie FPV**
 📧 [storkie@proton.me](mailto:storkie@proton.me)
 
 ---
 
-## 🧾 Licencia
+## **📌 Licencia**
 
-Este proyecto está bajo la licencia **MIT**.
-Consulta el archivo `LICENSE` para más detalles.
+Este proyecto se distribuye bajo la licencia **MIT**, permitiendo su uso y modificación con atribución al autor original.
+Consulta el archivo `LICENSE` para más información.
+
+---
+
+## **📌 Estado Actual del Proyecto**
+
+🚀 **Versión 0.1** — Prototipo funcional con sistema `onScroll` operativo y escena 3D placeholder completamente integrada.
+💡 Próxima versión incluirá el modelo 3D completo del **Storkie DRN** con animaciones de desmontaje y presentación técnica.
 
 ---
 
 <p align="center">
-  <sub>© 2025 Storkie FPV — Proyecto educativo y demostrativo. Todos los derechos reservados.</sub>
+  <sub>© 2025 Storkie FPV — Desarrollo y diseño técnico por Pau Díaz.</sub>
 </p>
-```
-
 ---
