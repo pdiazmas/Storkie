@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Storkie DRN — Scroll Experience (Demo funcional)</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Storkie DRN</h1>
+    <p>Desliza hacia abajo para ver cómo reacciona el dron FPV</p>
+  </header>
+
+  <main>
+    <div id="canvas-container"></div>
+
+    <section class="info" data-step="1" data-part="frame">
+      <h2>⚙️ Estructura</h2>
+      <p>El chasis ultraligero de fibra de carbono garantiza máxima estabilidad y resistencia con peso mínimo.</p>
+    </section>
+
+    <section class="info" data-step="2" data-part="motors">
+      <h2>� Motores</h2>
+      <p>Sistema de propulsión de alta eficiencia con motores brushless y hélices optimizadas para vuelo acrobático.</p>
+    </section>
+
+    <section class="info" data-step="3" data-part="camera">
+      <h2>🎥 Sistema FPV</h2>
+      <p>Cámara HD con transmisión en tiempo real y latencia ultra baja para una experiencia inmersiva.</p>
+    </section>
+
+    <section class="info" data-step="4" data-part="electronics">
+      <h2>🧠 Electrónica</h2>
+      <p>Controladora F7 con procesamiento avanzado y sistema de telemetría integrado.</p>
+    </section>
+
+    <section class="info" data-step="5" data-part="all">
+      <h2>🚁 Dron Completo</h2>
+      <p>Un sistema perfectamente integrado para rendimiento y control excepcionales.</p>
+    </section>
+  </main>
+
+  <footer>© 2025 Storkie. Todos los derechos reservados.</footer>
+
+  <script src="js/droneParts.js"></script>
+  <script src="js/droneScene.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
